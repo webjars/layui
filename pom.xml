@@ -11,7 +11,7 @@
     <packaging>jar</packaging>
     <groupId>org.webjars</groupId>
     <artifactId>layui</artifactId>
-    <version>2.7.6-SNAPSHOT</version>
+    <version>2.7.6</version>
     <name>layui</name>
     <description>WebJar for layui</description>
     <url>http://webjars.org</url>
@@ -51,7 +51,7 @@
         <url>http://github.com/webjars/layui</url>
         <connection>scm:git:https://github.com/webjars/layui.git</connection>
         <developerConnection>scm:git:https://github.com/webjars/layui.git</developerConnection>
-        <tag>HEAD</tag>
+        <tag>layui-2.7.6</tag>
     </scm>
 
     <build>
@@ -81,7 +81,7 @@
                         <configuration>
                             <target>
                                 <echo message="download archive" />
-                                <get src="${upstream.url}" dest="${project.build.directory}/${project.artifactId}.zip"/>
+                                <get src="${upstream.url}" dest="${project.build.directory}/${project.artifactId}.zip" />
                                 <echo message="unzip archive" />
                                 <unzip src="${project.build.directory}/${project.artifactId}.zip" dest="${project.build.directory}" />
                                 <echo message="moving resources" />
