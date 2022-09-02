@@ -11,14 +11,16 @@
     <packaging>jar</packaging>
     <groupId>org.webjars</groupId>
     <artifactId>layui</artifactId>
-    <version>2.6.9-SNAPSHOT</version>
+    <version>2.7.6-SNAPSHOT</version>
     <name>layui</name>
     <description>WebJar for layui</description>
     <url>http://webjars.org</url>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <upstream.url>http://res.layui.com/static/download/layui/layui-v${version.unsnapshot}.zip</upstream.url>
+        <!-- https://layui.gitee.io/v2/ -->
+        <download.version>1141311</download.version>
+        <upstream.url>https://gitee.com/layui/layui/attach_files/${download.version}/download</upstream.url>
         <destDir>${project.build.outputDirectory}/META-INF/resources/webjars/${project.artifactId}/${project.version}</destDir>
         <requirejs>
             {
@@ -79,12 +81,9 @@
                         <configuration>
                             <target>
                                 <echo message="download archive" />
-                                <exec executable="wget" dir="${project.build.directory}">
-                                    <arg value="--referer=http://www.layui.com/" />
-                                    <arg value="${upstream.url}" />
-                                </exec>
+                                <get src="${upstream.url}" dest="${project.build.directory}/${project.artifactId}.zip"/>
                                 <echo message="unzip archive" />
-                                <unzip src="${project.build.directory}/${project.artifactId}-v${version.unsnapshot}.zip" dest="${project.build.directory}" />
+                                <unzip src="${project.build.directory}/${project.artifactId}.zip" dest="${project.build.directory}" />
                                 <echo message="moving resources" />
                                 <move todir="${destDir}">
                                     <fileset dir="${project.build.directory}/${project.artifactId}-v${version.unsnapshot}/layui" />
